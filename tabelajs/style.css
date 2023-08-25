@@ -53,14 +53,14 @@
 
    .table {
        display: grid;
-       grid-template-rows: 1fr 1fr;
+       grid-template-rows: 5rem 1fr;
        width: 35rem;
        font-weight: 600;
     
    }
 
    .table .thead,
-   .table .tbody {
+   .table .linhacontato {
        display: grid;
        grid-template-columns: repeat(4, 1fr);
    }
