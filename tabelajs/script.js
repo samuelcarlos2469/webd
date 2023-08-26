@@ -6,7 +6,10 @@ form.addEventListener("submit", function (e){
 })
 
 let bd_contacts = getLocalStorage()
-let contador = 0
+    if (bd_contacts){
+        updateTable();//pra sempre mostrar a tabela, verificar se há algo no bd_contacts e ai usa o update pra escrever oq ja tinha
+    }
+let contador = 1 //por eu iniciar ele com 1, não dá pra os IDs acompanharem oq ja ficou salvo no localstorage, Rai disse q usou o lenght do bd_contacts(?????) pra isso, fica pra próxima!!
 
 function inserirContato(){
     const contact = {
@@ -14,7 +17,7 @@ function inserirContato(){
         fone: document.getElementById('txtFone').value,
         id: contador++
     }
- //const bd_contacts = getLocalStorage() //pq n consegue adicionar os contatos por ser constante - rai
+ //const bd_contacts = getLocalStorage() // como sempre se add um contato, não pode ser um constante, já q tem q mudar com +1 item
 
  bd_contacts.push(contact)
  
@@ -25,7 +28,7 @@ function inserirContato(){
 }
 
 function getLocalStorage(){
-    const contato = localStorage.getItem('bd_contacts')
+    let contato = localStorage.getItem('bd_contacts') //tem q ser let pq esta retornando vazio ali em baixo, trocou de tipo
     if (contato){
         return JSON.parse(contato)
     }
